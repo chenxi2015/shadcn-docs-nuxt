@@ -1,24 +1,26 @@
 <template>
   <UiCard
-    class="relative overflow-hidden [&:not(:first-child)]:mt-5 [&:not(:last-child)]:mb-5"
+    class="relative overflow-hidden [&:not(:first-child)]:mt-5 [&:not(:last-child)]:mb-5 bg-[#0F1117]"
     :class="[
       (inGroup || inTree) && 'mb-0 rounded-t-none border-none shadow-none',
       inStack && 'mb-0 rounded-none border-none shadow-none',
     ]"
   >
-    <div v-if="!inGroup && filename" class="flex items-center border-b p-3 font-mono text-sm">
-      <SmartIcon v-if="icon" :name="icon" class="mr-1.5" />
-      <span>{{ filename }}</span>
-      <CodeCopy :code class="ml-auto mr-1" />
+    <div v-if="!inGroup && filename" class="flex items-center font-mono text-sm text-zinc-200 border-zinc-700">
+      <div class="border-b border-green-600 p-3">
+        <!-- <SmartIcon v-if="icon" :name="icon" class="mr-1.5" /> -->
+        <span class="text-green-600">{{ filename }}</span>
+      </div>
+      <CodeCopy :code class="ml-auto mr-3" />
     </div>
 
     <span v-if="!filename" class="absolute right-3 top-3 z-10">
       <CodeCopy :code />
     </span>
-    <div class="bg-muted/30">
+    <div class="bg-[#0F1117]">
       <UiScrollArea :style="[(parsedMeta.has('height') || height) && `height: ${height || parsedMeta.get('height')}px`]">
         <div
-          class="overflow-x-auto py-3 text-sm"
+          class="overflow-x-auto py-3 text-sm text-zinc-200"
           :class="[
             !inGroup && !inTree && !filename && 'inline-copy',
             !language && 'pl-3',
@@ -101,6 +103,6 @@ const icon = computed(() => {
 
 .show-line-number .line::before {
   content: attr(line);
-  @apply text-sm w-5 inline-block text-right mr-4 text-muted-foreground;
+  @apply text-sm w-5 inline-block text-right mr-4 text-zinc-400;
 }
 </style>

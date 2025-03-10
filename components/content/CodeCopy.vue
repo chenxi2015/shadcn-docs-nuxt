@@ -4,7 +4,7 @@
       <div v-if="copied === false">
         <Icon
           :name="codeCopyIcon"
-          class="block cursor-pointer self-center text-muted-foreground hover:text-primary"
+          class="block cursor-pointer self-center text-muted-foreground hover:text-white"
           @click="handleClick"
         />
       </div>
@@ -12,7 +12,7 @@
         <Icon
           ref="checkIconRef"
           name="lucide:check"
-          class="block cursor-pointer self-center text-muted-foreground hover:text-primary"
+          class="block cursor-pointer self-center text-muted-foreground hover:text-white"
         />
       </div>
     </Transition>
